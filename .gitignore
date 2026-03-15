@@ -1,0 +1,5 @@
+# Arquivos com segredos reais — nunca commitar
+.env
+
+# Configuração do widget gerada a partir do .env
+widget/config.js

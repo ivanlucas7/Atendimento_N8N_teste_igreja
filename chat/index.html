@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graça Bot — Igreja Comunhão da Graça</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Ícone de microfone e envio via SVG inline no JS -->
+</head>
+<body>
+
+  <!-- =============================================
+       ESTRUTURA PRINCIPAL DO CHAT
+  ============================================= -->
+  <div class="chat-wrapper">
+
+    <!-- CABEÇALHO DO CHAT -->
+    <header class="chat-header">
+      <div class="chat-header__avatar">
+        <!-- Ícone de cruz estilizado -->
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="20" cy="20" r="20" fill="rgba(255,255,255,0.15)"/>
+          <rect x="17" y="8" width="6" height="24" rx="3" fill="white"/>
+          <rect x="8" y="17" width="24" height="6" rx="3" fill="white"/>
+        </svg>
+      </div>
+      <div class="chat-header__info">
+        <span class="chat-header__name">Graça Bot</span>
+        <span class="chat-header__status" id="headerStatus">Online</span>
+      </div>
+    </header>
+
+    <!-- HISTÓRICO DE MENSAGENS -->
+    <main class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="Histórico de mensagens">
+      <!-- As mensagens são inseridas aqui dinamicamente pelo script.js -->
+
+      <!-- Mensagem de boas-vindas gerada pelo JS na inicialização -->
+    </main>
+
+    <!-- INDICADOR "DIGITANDO..." -->
+    <div class="typing-indicator" id="typingIndicator" aria-live="polite" aria-label="Bot está digitando" style="display:none;">
+      <div class="typing-indicator__bubble">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <span class="typing-indicator__text">Graça Bot está digitando…</span>
+    </div>
+
+    <!-- BARRA DE GRAVAÇÃO DE ÁUDIO (visível apenas durante a gravação) -->
+    <div class="recording-bar" id="recordingBar" style="display:none;">
+      <div class="recording-bar__pulse"></div>
+      <span class="recording-bar__text">Gravando… <span id="recordingTimer">0:00</span></span>
+      <button class="recording-bar__cancel" id="cancelRecordingBtn" title="Cancelar gravação" aria-label="Cancelar gravação">
+        <!-- ícone X -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- RODAPÉ: CAMPO DE ENTRADA E BOTÕES -->
+    <footer class="chat-input-area">
+      <div class="chat-input-wrapper">
+        <textarea
+          id="messageInput"
+          class="chat-input"
+          placeholder="Digite uma mensagem…"
+          rows="1"
+          maxlength="2000"
+          aria-label="Campo de mensagem"
+        ></textarea>
+      </div>
+
+      <!-- Botão de envio de texto -->
+      <button class="btn-send" id="sendBtn" title="Enviar mensagem" aria-label="Enviar mensagem">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+        </svg>
+      </button>
+
+      <!-- Botão de gravação de áudio -->
+      <button class="btn-audio" id="audioBtn" title="Gravar áudio" aria-label="Gravar áudio">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+          <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+        </svg>
+      </button>
+    </footer>
+
+  </div><!-- /chat-wrapper -->
+
+  <script src="script.js"></script>
+</body>
+</html>
