@@ -1,6 +1,5 @@
 # Arquivos com segredos reais — nunca commitar
 .env
 
-# Configuração dos scripts gerada a partir do .env
-widget/config.js
-chat/config.js
+# Configuração dos scripts gerada a partir do .env — NUNCA commitar
+**/config.js
