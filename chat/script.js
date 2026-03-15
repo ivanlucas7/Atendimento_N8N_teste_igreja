@@ -7,51 +7,22 @@
    ⚙️  CONFIGURAÇÃO — ALTERE AQUI
    ================================================ */
 
-const CONFIG = {
-  /**
-   * URL do webhook do n8n para mensagens de TEXTO.
-   * Ex: https://seu-n8n.com/webhook/graca-bot
-   */
-  webhookTextUrl: 'https://lucas5477.app.n8n.cloud/webhook/chat-igreja',
-
-  /**
-   * URL do webhook do n8n para mensagens de ÁUDIO.
-   * Pode ser a mesma do texto ou um endpoint diferente.
-   * Ex: https://seu-n8n.com/webhook/graca-bot-audio
-   */
-  webhookAudioUrl: 'https://SEU_N8N/webhook/graca-bot-audio',
-
-  /**
-   * Nome exibido no chat para as respostas do bot.
-   */
-  botName: 'Graça Bot',
-
-  /**
-   * Tempo máximo de gravação de áudio em segundos.
-   * Após esse tempo, a gravação para automaticamente.
-   */
+// ⚠️  webhookTextUrl e apiKey NÃO têm padrão aqui intencionalmente.
+//    Defina-os em chat/config.js (gerado a partir do .env) ANTES
+//    de carregar este script.
+const CONFIG = Object.assign({
+  webhookTextUrl:     '',
+  webhookAudioUrl:    '',
+  botName:            'Graça Bot',
   maxRecordingSeconds: 120,
+  typingDelayMs:      1200,
+  fetchTimeoutMs:     60000,
+  apiKey:             '',
+}, window.GracaChatConfig || {});
 
-  /**
-   * Simular delay de "digitando..." em ms.
-   * Dá uma sensação mais natural à conversa.
-   */
-  typingDelayMs: 1200,
-
-  /**
-   * Tempo máximo de espera pela resposta do webhook do n8n (em ms).
-   * Agentes de IA costumam demorar 10–40 s. Aumente se necessário.
-   * Ex: 60000 = 60 segundos, 120000 = 2 minutos.
-   */
-  fetchTimeoutMs: 60000,
-
-  /**
-   * Chave secreta enviada no header x-api-key.
-   * Configure o mesmo valor no nó Webhook do n8n:
-   *   Authentication → Header Auth → Name: x-api-key → Value: (esta chave)
-   */
-  apiKey: 'gcig-2026-xK9q7mP3-vR8sL5nQ',
-};
+if (!CONFIG.webhookTextUrl || !CONFIG.apiKey) {
+  console.error('[GraçaBot] webhookTextUrl e apiKey devem ser definidos em window.GracaChatConfig (chat/config.js).');
+}
 
 /* ================================================
    REFERÊNCIAS AOS ELEMENTOS DO DOM

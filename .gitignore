@@ -1,5 +1,6 @@
 # Arquivos com segredos reais — nunca commitar
 .env
 
-# Configuração do widget gerada a partir do .env
+# Configuração dos scripts gerada a partir do .env
 widget/config.js
+chat/config.js
