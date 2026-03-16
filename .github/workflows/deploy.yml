@@ -44,7 +44,11 @@ jobs:
           WEBHOOK_AUDIO_URL: ${{ secrets.GRACA_WEBHOOK_AUDIO_URL }}
           API_KEY:           ${{ secrets.GRACA_API_KEY }}
         run: |
-          cat > chat/config.js << EOF
+          mkdir -p docs/chat
+          cp chat/index.html docs/chat/index.html
+          cp chat/script.js  docs/chat/script.js
+          cp chat/style.css  docs/chat/style.css
+          cat > docs/chat/config.js << EOF
           window.GracaChatConfig = {
             webhookTextUrl:  '${WEBHOOK_URL}',
             webhookAudioUrl: '${WEBHOOK_AUDIO_URL}',
@@ -58,7 +62,7 @@ jobs:
       - name: Empacotar arquivos para o Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: 'docs'
 
       - name: Deploy no GitHub Pages
         id: deployment
