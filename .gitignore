@@ -3,3 +3,7 @@
 
 # Configuração dos scripts gerada a partir do .env — NUNCA commitar
 **/config.js
+
+# Documentação e schema — apenas para uso local
+*.md
+01_database_schema.sql
