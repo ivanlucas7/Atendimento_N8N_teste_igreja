@@ -1,4 +1,4 @@
-/**
+/***
  * GRAÇA WIDGET — Chat pop-up embutível
  * Igreja Comunhão da Graça
  *
